@@ -149,6 +149,8 @@ def chat_main(client):
         user_id = client.HEADERS.get("CH-UserID")
         print_channel_list(client, max_limit)
         channel_name = input("[.] Enter channel_name: ")
+        if not client.setAudioProfile(agorartc.AUDIO_PROFILE_MUSIC_HIGH_QUALITY_STEREO(5)):
+            print("Failed to set the high quality audio profile")
         channel_info = client.join_channel(channel_name)
         if not channel_info['success']:
             print(f"[-] Error while joining the channel ({channel_info['error_message']})")
