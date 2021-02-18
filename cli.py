@@ -149,7 +149,9 @@ def chat_main(client):
         user_id = client.HEADERS.get("CH-UserID")
         print_channel_list(client, max_limit)
         channel_name = input("[.] Enter channel_name: ")
-        if not client.setAudioProfile(agorartc.AUDIO_PROFILE_MUSIC_HIGH_QUALITY_STEREO(5)):
+        # print(client.search_users("mishasamin"))
+        # print(client.follow(1765970636))
+        if RTC.setAudioProfile(agorartc.AUDIO_PROFILE_MUSIC_HIGH_QUALITY_STEREO, agorartc.AUDIO_SCENARIO_SHOWROOM) < 0:
             print("Failed to set the high quality audio profile")
         channel_info = client.join_channel(channel_name)
         if not channel_info['success']:
